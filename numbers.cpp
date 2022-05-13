@@ -11,23 +11,30 @@ int main() {
     std::string intNumber;
     int number;
     int sum = 0;
-    int counter = 0;
+    int numberCounter = 1;
+    int addedNumber;
+
 
 
     // input
-    std::cout << "Enter number (integer): ";
+    std::cout << "Enter number to add to (integer): ";
     std::cin >> intNumber;
     std::cout << std::endl;
 
     // process & output
     try {
         number = std::stoi(intNumber);
-        while (counter < number) {
-            counter = counter + 1;
-            sum = sum + counter;
+        for (int counter = 1; counter < number + 1; counter++) {
+            std::cout << "Enter number " << numberCounter <<" (integer): ";
+            std::cin >> addedNumber;
+
+            if (addedNumber < 0) {
+                continue;
+            }
+            sum = sum + addedNumber;
+            numberCounter = numberCounter + 1;
         }
-        std::cout << "The sum of numbers to "
-        << number << " is " << sum << std::endl;
+        std::cout << "The sum of numbers is " << sum << std::endl;
     } catch (std::invalid_argument) {
         std::cout << "Not an integer";
     }
